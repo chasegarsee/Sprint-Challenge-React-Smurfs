@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const Navi = () => {
   return (
     <div>
-      <div className="App">
+      <div className="Navi">
         <div>
-          <Link to="/">Smurf Village Home</Link>
+          <Link to="/">Village</Link>
         </div>
         <div>
           <Link to="/smurf-form">Add Smurf</Link>
