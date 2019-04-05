@@ -3,7 +3,9 @@ import React, { Component } from "react";
 import "./App.css";
 import SmurfForm from "./components/SmurfForm";
 import Smurfs from "./components/Smurfs";
+import Navi from "./components/Navi";
 
+import { Route } from "react-router-dom";
 import axios from "axios";
 
 class App extends Component {
@@ -34,11 +36,31 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfForm updateSmirfs={this.handleUpdateSmirfs} />
-        <Smurfs smurfs={this.state.smurfs} />
+        <Navi className="Navi" />
+        <Route
+          path="/smurf-form"
+          render={props => (
+            <SmurfForm {...props} updateSmirfs={this.handleUpdateSmirfs} />
+          )}
+        />
+        <Route
+          exact
+          path="/"
+          render={props => <Smurfs {...props} smurfs={this.state.smurfs} />}
+        />
       </div>
     );
   }
 }
 
 export default App;
+
+// const App = () => (
+//   <div>
+//     <Navigation>
+//       <Route exact path="/" component={Home} />
+//       <Route exact path="/about" component={About} />
+//       <Route exact path="/contact" component={Contact} />
+//     </Navigation>
+//   </div>
+// );
